@@ -1,0 +1,92 @@
+<form id="frmClient">
+  <section>
+    <fieldset>
+      <legend>Gestion des Commandes:</legend>
+      <div class="row col-lg-12">
+      <div  *ngIf="clients" class="col-lg-4">
+        <label class="conteneur" for="Client">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> Client : </label>
+          <select [(ngModel)]="commande.Client" class="form-control" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let c of clients,let id=index" [value]="idclients[id]">{{c.Nom}}</option>
+          </select>
+        </label>
+      </div>
+      <div class="col-lg-4">
+        <label class="conteneur" for="Destination">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> Destination :</label>
+          <input class="form-control" type="text" [(ngModel)]="commande.Destination" name="Destination" id="Destination" placeholder="Destination" required #Destination="ngModel"/>
+        </label>
+      </div>
+      <div class="col-lg-4">
+        <label class="conteneur" for="Nbre_voyages">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> Nombre de voyages :</label>
+          <input class="form-control" type="number" [(ngModel)]="commande.Nbre_voyages" name="Nbre_voyages" id="Nbre_voyages" placeholder="Nbre_voyages" required #Nbre_voyages="ngModel"/>
+        </label>
+      </div>
+      <div class="col-lg-4">
+        <label class="conteneur" for="HLS">
+        <label for="label-control"><i class="fa fa-angle-double-right"></i>  HLS:</label>
+          <input class="form-control" type="text" [(ngModel)]="commande.HLS" name="HLS" id="HLS" placeholder="HLS" required #HLS="ngModel"/>
+        </label>
+      </div>
+      <div class="col-lg-4">
+        <label class="conteneur" for="Chantier">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> Chantier :</label>
+          <input class="form-control" type="text" [(ngModel)]="commande.Chantier" name="Chantier" id="Chantier" placeholder="Chantier" required #Chantier="ngModel"/>
+        </label>
+      </div>
+      <div class="col-lg-4">
+        <label class="conteneur" for="Urgence">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> Urgence :</label>
+          <input class="form-control" type="text" [(ngModel)]="commande.Urgence" name="Urgence" id="Urgence" placeholder="Urgence" required #Urgence="ngModel"/>
+        </label>
+      </div>
+      <div class="col-lg-4">
+        <label class="conteneur" for="Duree_chevauchement">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> Durée du chevauchement :</label>
+          <input class="form-control" type="text" [(ngModel)]="commande.Duree_chevauchement" name="Duree_chevauchement" id="Duree_chevauchement" placeholder="Duree_chevauchement" required #Duree_chevauchement="ngModel"/>
+        </label>
+      </div>
+      </div>
+      <div class="pull-right col-lg-9" style="margin-top: 15px">
+        <button *ngIf="indexToUpdate ==-1" (click)="add(commande)" class="col-lg-3 pull-right btn btn-success "><i class="fa fa-plus"></i> Ajouter</button>
+        <button *ngIf="indexToUpdate != -1" (click)="update(indexToUpdate,commande)" class="col-lg-3 pull-right btn btn-primary "><i class="fa fa-pencil"></i> Modifier</button>
+        <button *ngIf="indexToUpdate != -1" (click)="cancel()" class="col-lg-3 pull-right btn btn-white "><i class="fa fa-undo"></i> Annuler</button>
+      </div>
+    </fieldset>
+  </section>
+</form>
+<hr>
+<div class="row">
+    <table id="tblListClients"><thead>
+    <tr>
+      <th>Id</th>
+      <th>Client Id</th>
+      <th>Destination</th>
+      <th>Nombre de voyages :</th>
+      <th>HLS</th>
+      <th>Chantier</th>
+      <th>Urgence</th>
+      <th>Durée chev.</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+      <tbody>
+      <tr *ngFor="let commande of commandes,let i=index">
+        <td>{{i+1}}</td>
+        <td>{{commande.Client}}</td>
+        <td>{{commande.Destination}}</td>
+        <td>{{commande.Nbre_voyages}}</td>
+        <td>{{commande.HLS}}</td>
+        <td>{{commande.Chantier}}</td>
+        <td>{{commande.Urgence}}</td>
+        <td>{{commande.Duree_chevauchement}}</td>
+        <td>
+          <button class="btn btn-info btn-xs" (click)="setToUpdate(i)"><i class="fa fa-pencil"></i></button>
+          <button class="btn btn-danger btn-xs" (click)="delete(i)"><i class="fa fa-trash"></i></button>
+
+        </td>
+      </tr>
+      </tbody>
+  </table>
+</div>

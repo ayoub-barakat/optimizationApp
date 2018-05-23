@@ -18,3 +18,66 @@ td {
   border-top: 1px solid #ddd;
   padding: 8px;
 }
+
+.borded{
+  border: 2px solid;
+  border-radius: 15px;
+}
+
+.conteneur > label{
+  float: left;
+  width: 200px;
+  margin-right: 20px;
+}
+.conteneur > input {
+  float: left;
+}
+.conteneur > select {
+  float: left;
+}
+.conteneur{
+	margin: 10px;
+	width : 95%;
+  padding: 7px;
+  border-width: 90%;
+  border-top: 1px solid #ddd;
+
+}
+
+.conteneur > label{
+	margin: 4px;
+	text-align: left;
+
+}
+
+.formControl {
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+
+.w3-border-blue, .w3-hover-border-blue:hover {
+    border-color: #2196F3!important;
+}
+
+.w3-pale-blue, .w3-hover-pale-blue:hover {
+    color: #000!important;
+    background-color: #FAFAFA!important;
+    margin: 0 15px;
+    height: 670px;
+}
+.w3-leftbar {
+    border-left: 50px solid #ccc!important;
+    border-top: 50px solid #ccc!important;
+}
+.w3-container, .w3-panel {
+    padding: 10px 16px;
+}

@@ -1,23 +1,87 @@
-<h2>Search</h2>
-<form>
-  <input type="search" name="query" [(ngModel)]="query" (keyup.enter)="search()">
-  <button type="button" (click)="search()">Search</button>
-</form>
-<table *ngIf="searchResults">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Phone</th>
-    <th>Address</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let person of searchResults; let i=index">
-    <td><a [routerLink]="['/edit', person.id]">{{person.name}}</a></td>
-    <td>{{person.phone}}</td>
-    <td>{{person.address.street}}<br/>
-      {{person.address.city}}, {{person.address.state}} {{person.address.zip}}
-    </td>
-  </tr>
-  </tbody>
-</table>
+<section>
+  <form class="form-horizontal">
+    <div class="col-sm-12 text-center" *ngIf="clients">
+        <label class=" col-sm-3" style="margin-top: 8px"><i class="fa fa-search"></i>   Chercher Commandes </label>
+        <input type="search" class="col-sm-8 formControl" name="query" [(ngModel)]="clients[0].Nom" (keyup.enter)="search()"/>
+    </div>
+  </form>
+</section>
+<br>
+<div class="borded row" style="margin-right:10px;margin-top:30px">
+  <label style="margin-left:15px;margin-top:10px">Dimensionner une Commande </label>
+  <div class="col-sm-12 conteneur">
+      <label class=" col-sm-4 pull-left"><i class="fa fa-calendar fa-2x"></i>  Date </label>
+      <input type="date" class="col-sm-4 formControl" name="query" [(ngModel)]="query" (keyup.enter)="search()"/>
+  </div>
+  <div class="col-sm-12 conteneur">
+      <label class=" col-sm-4 pull-left"><i class="fa fa-map-marker fa-2x"></i>  Usine </label>
+      <div class="col-sm-4">
+        <label style="margin-top: 10px"><b >Benni Mellal</b></label>  <input type="checkbox" class="col-sm-4 formControl" name="query" [(ngModel)]="usine" >
+      </div>
+      <div class="col-sm-4">
+        <label style="margin-top: 10px"><b >Ben Ahmed</b></label>  <input type="checkbox" class="col-sm-4 formControl" name="query" [(ngModel)]="usine" >
+      </div>
+  </div>
+  <div class="col-sm-12 conteneur">
+      <label class=" col-sm-4 pull-left"><i class="fa fa-truck fa-2x"></i>  Commande </label>
+      <select [(ngModel)]="client" (change)="getCommandeFromClient(client)" class="formControl col-sm-4" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let c of clients,let id=index" [ngValue]="id">{{c.Nom}}</option>
+      </select>
+      <button class="btn btn-default formControl col-sm-1" style="margin-left:5px"><i class="fa fa-plus"></i> <b> Ajouter</b></button>
+    <button (click)="show =! show" class="btn btn-warning formControl col-sm-1" style="margin-left:5px"><i class="fa fa-arrow-circle-down"></i> <b> Voir</b></button>
+    <button (click)="show =! show" class="btn btn-warning formControl col-sm-1" style="margin-left:5px"><i class="fa fa-arrow-circle-up"></i> <b> Cacher</b></button>
+    <button class="btn btn-info btn-lg formControl col-sm-2 " style="margin-left:5px"><i class="fa fa-crop"></i> <b> Dimensionner</b></button>
+    </div>
+    <div *ngIf="commande.Client && show" style="margin-top:240px">
+      <div class="w3-container w3-pale-blue w3-leftbar w3-border-blue conteneur text-center">
+        <div  *ngIf="clients" class="row col-sm-12">
+          <label class="conteneur" for="Client">
+            <label for="pull-left col-sm-2"><i class="fa fa-truck"></i> {{show}} Client : {{i}}</label>
+            <select [(ngModel)]="commande.Client" class="col-sm-5 formControl" [ngModelOptions]="{standalone: true}"><option *ngFor="let c of clients,let id=index" [value]="idclients[id]">{{c.Nom}}</option></select>
+          </label>
+        </div>
+        <div class="row col-sm-12">
+          <label class="conteneur" for="Destination">
+            <label for="pull-left col-sm-2"><i class="fa fa-truck"></i> Destination :</label>
+            <input class="col-sm-5 formControl" type="text" [(ngModel)]="commande.Destination" name="Destination" id="Destination" placeholder="Destination" required #Destination="ngModel"/>
+          </label>
+        </div>
+        <div class="row col-sm-12">
+          <label class="conteneur" for="Nbre_voyages">
+            <label for="pull-left col-sm-2"><i class="fa fa-truck"></i> Nombre de voyages :</label>
+            <input class="col-sm-5 formControl" type="number" [(ngModel)]="commande.Nbre_voyages" name="Nbre_voyages" id="Nbre_voyages" placeholder="Nbre_voyages" required #Nbre_voyages="ngModel"/>
+          </label>
+        </div>
+        <div class="row col-sm-12">
+          <label class="conteneur" for="HLS">
+            <label for="pull-left col-sm-2"><i class="fa fa-truck"></i> HLS :</label>
+            <input class="col-sm-5 formControl" type="number" [(ngModel)]="commande.HLS" name="HLS" id="HLS" placeholder="HLS" required #HLS="ngModel"/>
+          </label>
+        </div>
+        <div class="row col-sm-12">
+          <label class="conteneur" for="Chantier">
+            <label for="pull-left col-sm-2"><i class="fa fa-truck"></i> Chantier :</label>
+            <input class="col-sm-5 formControl" type="text" [(ngModel)]="commande.Chantier" name="Chantier" id="Chantier" placeholder="Chantier" required #Chantier="ngModel"/>
+          </label>
+        </div>
+        <div class="row col-sm-12">
+          <label class="conteneur" for="Urgence">
+            <label for="pull-left col-sm-2"><i class="fa fa-truck"></i> Urgence :</label>
+            <input class="col-sm-5 formControl" type="text" [(ngModel)]="commande.Urgence" name="Urgence" id="Urgence" placeholder="Urgence" required #Urgence="ngModel"/>
+          </label>
+        </div>
+        <div class="row col-sm-12">
+          <label class="conteneur" for="Duree_chevauchement">
+            <label for="pull-left col-sm-2"><i class="fa fa-truck"></i> Durée du chevauchement :</label>
+            <input class="col-sm-5 formControl" type="text" [(ngModel)]="commande.Duree_chevauchement" name="Duree_chevauchement" id="Duree_chevauchement" placeholder="Duree_chevauchement" required #Duree_chevauchement="ngModel"/>
+          </label>
+        </div>
+        <div class="col-sm-12">
+          <button class="btn col-sm-2 pull-right btn-info"><i class="fa fa-pencil fa-2x"></i> <b> Modifier </b></button>
+          <button class="btn col-sm-2 pull-right btn-danger"><i class="fa fa-trash fa-2x"></i> <b> Supprimer</b></button>
+        </div>
+        </div>
+    </div>
+    <br>
+  <!--a [routerLink]="['/edit', person.id]">{{person.name}}</a-->
+</div>

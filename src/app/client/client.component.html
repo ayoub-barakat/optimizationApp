@@ -1,0 +1,56 @@
+<form id="frmClient">
+			<section>
+        <fieldset>
+				<legend>Gestion des Clients:</legend>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="nom">
+  							<label for="label-control">Nom :</label>
+  							<input type="text" class="form-control" [(ngModel)]="client.Nom" name="Nom" id="Nom" placeholder="Nom" required #Nom="ngModel"/>
+  						</label>
+  					</div>
+            <div class="col-lg-4">
+  						<label class="conteneur" for="nom">
+  							<label for="label-control">Criticité :</label>
+  							<input type="text" class="form-control" [(ngModel)]="client.Criticite" name="Criticite" id="Criticite" placeholder="Criticite" required #Criticite="ngModel"/>
+  						</label>
+  					</div>
+            <div class="col-lg-4">
+  						<label class="conteneur" for="nom">
+  							<label for="label-control">Actif :</label>
+  							<input type="text" class="form-control" [(ngModel)]="client.Actif" name="Actif" id="Actif" placeholder="Actif" required #Actif="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="pull-right col-lg-9" style="margin-top: 15px">
+  						<button *ngIf="indexToUpdate ==-1" (click)="add(client)" class="col-lg-3 pull-right btn btn-success "><i class="fa fa-plus"></i> Ajouter</button>
+  						<button *ngIf="indexToUpdate != -1" (click)="update(indexToUpdate,client)" class="col-lg-3 pull-right btn btn-primary "><i class="fa fa-pencil"></i> Modifier</button>
+  						<button *ngIf="indexToUpdate != -1" (click)="cancel()" class="col-lg-3 pull-right btn btn-white "><i class="fa fa-undo"></i> Annuler</button>
+  					</div>
+			</fieldset>
+		</section>
+	</form>
+<hr>
+<div class="row">
+  <table id="tblListClients"><thead>
+      <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Criticité du Client</th>
+      <th>Actif</th>
+      <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let client of clients,let i=index">
+      <td>{{i+1}}</td>
+      <td>{{client.Nom}}</td>
+      <td>{{client.Criticite}}</td>
+      <td>{{client.Actif}}</td>
+      <td>
+        <button class="btn btn-info btn-xs" (click)="setToUpdate(i)"><i class="fa fa-pencil"></i></button>
+        <button class="btn btn-danger btn-xs" (click)="delete(i)"><i class="fa fa-trash"></i></button>
+
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
