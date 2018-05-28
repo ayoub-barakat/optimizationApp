@@ -18,7 +18,11 @@ td {
   border-top: 1px solid #ddd;
   padding: 8px;
 }
-
+.search{
+  border-bottom: 2px dashed;
+  padding: 5px 0px;
+  margin: 15px 0px;
+}
 .borded{
   border: 2px solid;
   border-radius: 15px;
@@ -40,7 +44,6 @@ td {
 	width : 95%;
   padding: 7px;
   border-width: 90%;
-  border-top: 1px solid #ddd;
 
 }
 
@@ -52,6 +55,7 @@ td {
 
 .formControl {
     display: block;
+    width: 70% !inherit;
     height: 34px;
     padding: 6px 12px;
     font-size: 14px;
@@ -61,6 +65,32 @@ td {
     border-radius: 4px;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.form-group{
+  margin: 10px;
+}
+.formTitle {
+    display: flex;
+    margin-top: 30px;
+    padding: 5px;
+    text-align: justify;
+    content: normal;
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.check{
+  width: 22px;
+  height: 22px;
+  margin: 2px;
 }
 
 
@@ -77,6 +107,18 @@ td {
 .w3-leftbar {
     border-left: 50px solid #ccc!important;
     border-top: 50px solid #ccc!important;
+}
+.rowInfo {
+    border-left: 10px solid #ccc!important;
+    border-right: 10px solid #ccc!important;
+    border-top: 6px solid white!important;
+}
+.rowInfoBtn {
+  padding: 5px;
+    border: 8px solid #ccc!important;
+}
+.rowInfoBtn > button{
+    margin: 5px;
 }
 .w3-container, .w3-panel {
     padding: 10px 16px;

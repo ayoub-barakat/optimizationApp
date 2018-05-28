@@ -36,7 +36,8 @@ table#tblListClients{
   border: 2px solid;
   border-radius: 15px;
 	text-align: center;
-	width: 100%;
+	margin: auto;
+	width: 95%;
 }
 
 table#tblListClients thead tr th{

@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" (click)="toggleState()" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><i class="fa fa-truck fa-2x"></i> <b> Optimisation</b> </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse in" [ngClass]="{ 'in': isIn }">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li><a role="tab" (click)="toggleState()"><i class="fa fa-info"></i> About</a></li>
+        <li><a role="tab" (click)="toggleState()"><i class="fa fa-envelope"></i> Contact</a></li>
+        <li class="dropdown" [ngClass]="{ 'open': isDown }">
+          <a role="tab" (click)="toggleDropDown()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cogs"></i> Administration
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a role="tab" (click)="toggleDropDown()" data-toggle="tab" [routerLinkActive]="['active']" [routerLink]="['/clients']"><i class="fa fa-cog"></i> Clients</a></li>
+            <li><a role="tab" (click)="toggleDropDown()" data-toggle="tab" [routerLinkActive]="['active']" [routerLink]="['/commandes']"><i class="fa fa-cog"></i> Commandes</a></li>
+            <li><a role="tab" (click)="toggleDropDown()" data-toggle="tab" [routerLinkActive]="['active']" [routerLink]="['/camions']"><i class="fa fa-cog"></i> Camions</a></li>
+            <li><a role="tab" (click)="toggleDropDown()" data-toggle="tab" [routerLinkActive]="['active']" [routerLink]="['/distinations']"><i class="fa fa-cog"></i> Distinations</a></li>
+            <li><a role="tab" (click)="toggleDropDown()" data-toggle="tab" [routerLinkActive]="['active']" [routerLink]="['/chantiers']"><i class="fa fa-cog"></i> Chantiers</a></li>
+            <li><a role="tab" (click)="toggleDropDown()" data-toggle="tab" [routerLinkActive]="['active']" [routerLink]="['/usines']"><i class="fa fa-cog"></i> Usines</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class=""><a><i class="fa fa-calendar"></i> {{current | date : 'dd/MM/yyyy HH:mm:ss'}}</a></li>
+        <li class=""><a><i class="fa fa-bars" style="font-size: x-large;"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container-fluid -->
+</nav>

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditComponent } from './edit/edit.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   { path: 'camions', component: CamionComponent },
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     DistinationComponent,
     ClientComponent,
     ChantierComponent,
-    UsineComponent
+    UsineComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

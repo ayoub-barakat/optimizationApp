@@ -1,4 +1,4 @@
-<form id="frmClient">
+<form id="frmCommande">
   <section>
     <fieldset>
       <legend>Gestion des Commandes:</legend>
@@ -26,7 +26,7 @@
       <div class="col-lg-4">
         <label class="conteneur" for="HLS">
         <label for="label-control"><i class="fa fa-angle-double-right"></i>  HLS:</label>
-          <input class="form-control" type="text" [(ngModel)]="commande.HLS" name="HLS" id="HLS" placeholder="HLS" required #HLS="ngModel"/>
+          <input class="form-control" type="time" [(ngModel)]="commande.HLS" name="HLS" id="HLS" placeholder="HLS" required #HLS="ngModel"/>
         </label>
       </div>
       <div class="col-lg-4">
@@ -36,29 +36,55 @@
         </label>
       </div>
       <div class="col-lg-4">
-        <label class="conteneur" for="Urgence">
-          <label for="label-control"><i class="fa fa-angle-double-right"></i> Urgence :</label>
-          <input class="form-control" type="text" [(ngModel)]="commande.Urgence" name="Urgence" id="Urgence" placeholder="Urgence" required #Urgence="ngModel"/>
+        <label class="conteneur" for="Duree_chevauchement">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> Durée du chevauchement :</label>
+          <input class="form-control" type="time" [(ngModel)]="commande.Duree_chevauchement" name="Duree_chevauchement" id="Duree_chevauchement" placeholder="Duree_chevauchement" required #Duree_chevauchement="ngModel"/>
         </label>
       </div>
       <div class="col-lg-4">
-        <label class="conteneur" for="Duree_chevauchement">
-          <label for="label-control"><i class="fa fa-angle-double-right"></i> Durée du chevauchement :</label>
-          <input class="form-control" type="text" [(ngModel)]="commande.Duree_chevauchement" name="Duree_chevauchement" id="Duree_chevauchement" placeholder="Duree_chevauchement" required #Duree_chevauchement="ngModel"/>
+        <label class="conteneur" for="Duree_Trajet">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> Durée du trajet :</label>
+          <input class="form-control" type="text" [(ngModel)]="commande.Duree_Trajet" name="Duree_Trajet" id="Duree_Trajet" placeholder="Durée du trajet" required #Duree_Trajet="ngModel"/>
         </label>
       </div>
+      <div class="col-lg-4">
+        <label class="conteneur" for="DD">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> DD :</label>
+          <input class="form-control" type="text" [(ngModel)]="commande.DD" name="DD" id="DD" placeholder="DD" required #DD="ngModel"/>
+        </label>
+      </div>
+      <div class="col-lg-4">
+        <label class="conteneur" for="PVente">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> Prix de vente :</label>
+          <input class="form-control" type="text" [(ngModel)]="commande.PVente" name="PVente" id="PVente" placeholder="Prix de vente :" required #PVente="ngModel"/>
+        </label>
+      </div>
+      <div class="col-lg-4">
+        <label class="conteneur" for="Criticite_Client">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> Criticité du client :</label>
+          <input class="form-control" type="number" [(ngModel)]="commande.Criticite_Client" name="Criticite_Client" id="Criticite_Client" placeholder="Criticité client" required #Criticite_Client="ngModel"/>
+        </label>
+      </div>
+      <div class="col-lg-4">
+        <label class="conteneur" for="Urgence">
+          <label for="label-control"><i class="fa fa-angle-double-right"></i> Urgence :</label>
+          <label class="formControl pull-right col-sm-2 col-lg-2"><b >3</b><input type="radio" class="pull-right check" [checked]=true value="3" [(ngModel)]="commande.Urgence" [ngModelOptions]="{standalone: true}" /></label>
+          <label class="formControl pull-right col-sm-2 col-lg-2"><b >2</b><input type="radio" class="pull-right check" [checked]=true value="2" [(ngModel)]="commande.Urgence" [ngModelOptions]="{standalone: true}" /></label>
+          <label class="formControl pull-right col-sm-2 col-lg-2"><b >1</b><input type="radio" class="pull-right check" [checked]=true value="1" [(ngModel)]="commande.Urgence" [ngModelOptions]="{standalone: true}" /></label>
+        </label>
       </div>
       <div class="pull-right col-lg-9" style="margin-top: 15px">
         <button *ngIf="indexToUpdate ==-1" (click)="add(commande)" class="col-lg-3 pull-right btn btn-success "><i class="fa fa-plus"></i> Ajouter</button>
         <button *ngIf="indexToUpdate != -1" (click)="update(indexToUpdate,commande)" class="col-lg-3 pull-right btn btn-primary "><i class="fa fa-pencil"></i> Modifier</button>
         <button *ngIf="indexToUpdate != -1" (click)="cancel()" class="col-lg-3 pull-right btn btn-white "><i class="fa fa-undo"></i> Annuler</button>
       </div>
+      </div>
     </fieldset>
   </section>
 </form>
 <hr>
 <div class="row">
-    <table id="tblListClients"><thead>
+    <table id="tblListCommandes"><thead>
     <tr>
       <th>Id</th>
       <th>Client Id</th>

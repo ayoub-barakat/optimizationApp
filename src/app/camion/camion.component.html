@@ -1,3 +1,87 @@
-<p>
-  camion works!
-</p>
+<form id="frm">
+			<section>
+        <fieldset>
+				<legend>Gestion des Camions:</legend>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="Num">
+  							<label for="label-control">Num :</label>
+  							<input type="text" class="form-control" [(ngModel)]="camion.Num" name="Num" id="Num" placeholder="Num" required #Num="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="Matricule">
+  							<label for="label-control">Matricule :</label>
+  							<input type="text" class="form-control" [(ngModel)]="camion.Matricule" name="Matricule" id="Matricule" placeholder="Matricule" required #Matricule="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="Transporteur">
+  							<label for="label-control">Transporteur :</label>
+  							<input type="text" class="form-control" [(ngModel)]="camion.Transporteur" name="Transporteur" id="Transporteur" placeholder="Transporteur" required #Transporteur="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="Dedie">
+  							<label for="label-control">Dedie :</label>
+  							<input type="text" class="form-control" [(ngModel)]="camion.Dedie" name="Dedie" id="Dedie" placeholder="Dedie" required #Dedie="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="Taux">
+  							<label for="label-control">Taux Disp. :</label>
+  							<input type="number" class="form-control" [(ngModel)]="camion.Taux" name="Taux" id="Taux" placeholder="Taux" required #Taux="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="CA">
+  							<label for="label-control">CA :</label>
+  							<input type="text" class="form-control" [(ngModel)]="camion.CA" name="CA" id="CA" placeholder="CA" required #CA="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="Disponibilite">
+  							<label for="label-control">Disponibilité :</label>
+  							<input type="datetime-local" class="form-control" [(ngModel)]="camion.Disponibilite" name="Disponibilite" id="Disponibilite" placeholder="Disponibilité" required #Disponibilite="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="pull-right col-lg-9" style="margin-top: 15px">
+  						<button *ngIf="indexToUpdate ==-1" (click)="add(camion)" class="col-lg-3 pull-right btn btn-success "><i class="fa fa-plus"></i> Ajouter</button>
+  						<button *ngIf="indexToUpdate != -1" (click)="update(indexToUpdate,camion)" class="col-lg-3 pull-right btn btn-primary "><i class="fa fa-pencil"></i> Modifier</button>
+  						<button *ngIf="indexToUpdate != -1" (click)="cancel()" class="col-lg-3 pull-right btn btn-white "><i class="fa fa-undo"></i> Annuler</button>
+  					</div>
+			</fieldset>
+		</section>
+</form>
+<hr>
+<div class="row">
+  <table id="tblList"><thead>
+      <tr>
+      <th>Id</th>
+      <th>Num</th>
+      <th>Matricule</th>
+      <th>Transporteur</th>
+      <th>Dédié</th>
+      <th>Taux Disp.</th>
+      <th>CA</th>
+      <th>Disponibilité</th>
+      <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let camion of camions,let i=index">
+      <td>{{i+1}}</td>
+      <td>{{camion.Num}}</td>
+      <td>{{camion.Matricule}} </td>
+      <td>{{camion.Transporteur}} </td>
+      <td>{{camion.Dedie}} </td>
+      <td>{{camion.Taux}} </td>
+      <td>{{camion.CA}} </td>
+      <td>{{camion.Disponibilite}} </td>
+      <td>
+        <button class="btn btn-info btn-xs" (click)="setToUpdate(i)"><i class="fa fa-pencil"></i></button>
+        <button class="btn btn-danger btn-xs" (click)="delete(i)"><i class="fa fa-trash"></i></button>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

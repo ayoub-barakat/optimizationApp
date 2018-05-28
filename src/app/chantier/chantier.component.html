@@ -1,3 +1,57 @@
-<p>
-  chantier works!
-</p>
+<form id="frmChantier">
+			<section>
+        <fieldset>
+				<legend>Gestion des Chantiers:</legend>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="Nom">
+  							<label for="label-control">Nom :</label>
+  							<input type="text" class="form-control" [(ngModel)]="chantier.Nom" name="Nom" id="Nom" placeholder="Nom" required #Nom="ngModel"/>
+  						</label>
+  					</div>
+            <div  *ngIf="clients" class="col-lg-4">
+              <label class="conteneur" for="Client">
+                <label for="label-control"><i class="fa fa-angle-double-right"></i> Client : </label>
+                <select [(ngModel)]="chantier.Client" class="form-control" [ngModelOptions]="{standalone: true}">
+                  <option *ngFor="let c of clients,let id=index" [value]="idclients[id]">{{c.Nom}}</option>
+                </select>
+              </label>
+            </div>
+            <div class="col-lg-4">
+  						<label class="conteneur" for="Duree_decharge">
+  							<label for="label-control">Durée de décharge :</label>
+  							<input type="time" class="form-control" [(ngModel)]="chantier.Duree_decharge" name="Duree_decharge" id="Duree_decharge" placeholder="Duree_decharge" required #Duree_decharge="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="pull-right col-lg-9" style="margin-top: 15px">
+  						<button *ngIf="indexToUpdate ==-1" (click)="add(chantier)" class="col-lg-3 pull-right btn btn-success "><i class="fa fa-plus"></i> Ajouter</button>
+  						<button *ngIf="indexToUpdate != -1" (click)="update(indexToUpdate,chantier)" class="col-lg-3 pull-right btn btn-primary "><i class="fa fa-pencil"></i> Modifier</button>
+  						<button *ngIf="indexToUpdate != -1" (click)="cancel()" class="col-lg-3 pull-right btn btn-white "><i class="fa fa-undo"></i> Annuler</button>
+  					</div>
+			</fieldset>
+		</section>
+</form>
+<hr>
+<div class="row">
+  <table id="tblListChantiers"><thead>
+      <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Client</th>
+      <th>Durée décharge</th>
+      <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let chantier of chantiers,let i=index">
+      <td>{{i+1}}</td>
+      <td>{{chantier.Nom}}</td>
+      <td>{{chantier.ClientName}} </td>
+      <td>{{chantier.Duree_decharge}}</td>
+      <td>
+        <button class="btn btn-info btn-xs" (click)="setToUpdate(i)"><i class="fa fa-pencil"></i></button>
+        <button class="btn btn-danger btn-xs" (click)="delete(i)"><i class="fa fa-trash"></i></button>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

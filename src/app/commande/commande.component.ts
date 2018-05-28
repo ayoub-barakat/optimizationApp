@@ -5,7 +5,7 @@ import { ClientService } from '../client/client.service'
 @Component({
   selector: 'app-commande',
   templateUrl: './commande.component.html',
-  styleUrls: ['../client/client.component.css']
+  styleUrls: ['./commande.component.css']
 })
 export class CommandeComponent implements OnInit {
 
@@ -60,6 +60,7 @@ export class CommandeComponent implements OnInit {
       (data: any) => {
         this.commandes[index]=commande;
         this.commande={};
+        this.indexToUpdate =-1;
         console.log("update commande",id);},
       error => console.log(error)
     );

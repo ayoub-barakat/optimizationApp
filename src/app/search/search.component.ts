@@ -1,3 +1,4 @@
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Person, SearchService } from '../shared';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +13,8 @@ import { CommandeService } from '../commande/commande.service'
 })
 export class SearchComponent implements OnInit, OnDestroy {
   query: string;
+  usine: string;
+  client: string;
   show : boolean=true;
   searchResults: Array<Person>;
   sub: Subscription;

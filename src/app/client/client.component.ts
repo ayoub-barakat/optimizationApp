@@ -58,6 +58,7 @@ export class ClientComponent implements OnInit {
         (data: any) => {
           this.clients[index]=client;
           this.client={};
+          this.indexToUpdate =-1;
           console.log("update client",id);},
         error => console.log(error)
       );

@@ -1,3 +1,63 @@
-<p>
-  distination works!
-</p>
+<form id="frm">
+			<section>
+        <fieldset>
+				<legend>Gestion des Destinations:</legend>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="Nom">
+  							<label for="label-control">Nom :</label>
+  							<input type="text" class="form-control" [(ngModel)]="distination.Nom" name="Nom" id="Nom" placeholder="Nom" required #Nom="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="Distance">
+  							<label for="label-control">Distance :</label>
+  							<input type="number" class="form-control" [(ngModel)]="distination.Distance" name="Distance" id="Distance" placeholder="Distance" required #Distance="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="Trajet">
+  							<label for="label-control">Trajet :</label>
+  							<input type="text" class="form-control" [(ngModel)]="distination.Trajet" name="Trajet" id="Trajet" placeholder="Trajet" required #Trajet="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="col-lg-4">
+  						<label class="conteneur" for="Prix_Trajet">
+  							<label for="label-control">Prix_Trajet :</label>
+  							<input type="text" class="form-control" [(ngModel)]="distination.Prix_Trajet" name="Prix_Trajet" id="Prix_Trajet" placeholder="Prix Trajet" required #Prix_Trajet="ngModel"/>
+  						</label>
+  					</div>
+  					<div class="pull-right col-lg-9" style="margin-top: 15px">
+  						<button *ngIf="indexToUpdate ==-1" (click)="add(distination)" class="col-lg-3 pull-right btn btn-success "><i class="fa fa-plus"></i> Ajouter</button>
+  						<button *ngIf="indexToUpdate != -1" (click)="update(indexToUpdate,distination)" class="col-lg-3 pull-right btn btn-primary "><i class="fa fa-pencil"></i> Modifier</button>
+  						<button *ngIf="indexToUpdate != -1" (click)="cancel()" class="col-lg-3 pull-right btn btn-white "><i class="fa fa-undo"></i> Annuler</button>
+  					</div>
+			</fieldset>
+		</section>
+</form>
+<hr>
+<div class="row">
+  <table id="tblList"><thead>
+      <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Distance</th>
+      <th>Trajet</th>
+      <th>Prix Trajet</th>
+      <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let distination of distinations,let i=index">
+      <td>{{i+1}}</td>
+      <td>{{distination.Nom}}</td>
+      <td>{{distination.Distance}} </td>
+      <td>{{distination.Trajet}}</td>
+      <td>{{distination.Prix_Trajet}}</td>
+      <td>
+        <button class="btn btn-info btn-xs" (click)="setToUpdate(i)"><i class="fa fa-pencil"></i></button>
+        <button class="btn btn-danger btn-xs" (click)="delete(i)"><i class="fa fa-trash"></i></button>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
