@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommandeService } from './commande.service'
 import { ClientService } from '../client/client.service'
+import { ChantierService } from '../chantier/chantier.service'
+import { DistinationService } from '../distination/distination.service'
 
 @Component({
   selector: 'app-commande',
@@ -11,11 +13,19 @@ export class CommandeComponent implements OnInit {
 
   clients : any[];
   idclients : any[];
+  chantiers : any[];
+  idchantiers : any[];
+  distinations : any[];
+  iddistinations : any[];
   ids : any[];
   commandes : any[];
   commande : any = {};
   indexToUpdate : number=-1;
-  constructor(private commandeService: CommandeService,private clientService: ClientService) { }
+  constructor(private commandeService: CommandeService,
+              private clientService: ClientService,
+              private chantierService: ChantierService,
+              private distinationService: DistinationService
+            ) { }
 
   ngOnInit() {
     this.getAll();
@@ -78,6 +88,18 @@ export class CommandeComponent implements OnInit {
       (data: any) => {
         this.clients = Object.values(data);
         this.idclients = Object.keys(data);
+        error => console.log(error)
+      });
+    this.chantierService.getAll().subscribe(
+      (data: any) => {
+        this.chantiers = Object.values(data);
+        this.idchantiers = Object.keys(data);
+        error => console.log(error)
+      });
+    this.distinationService.getAll().subscribe(
+      (data: any) => {
+        this.distinations = Object.values(data);
+        this.iddistinations = Object.keys(data);
         error => console.log(error)
       });
   }

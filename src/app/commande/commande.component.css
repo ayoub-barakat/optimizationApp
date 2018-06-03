@@ -67,3 +67,7 @@ table#tblListCommandes tbody td button{
 	margin-left: 10px;
 
 }
+
+#frmCommande{
+  padding: 10px
+}

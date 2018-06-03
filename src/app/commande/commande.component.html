@@ -14,7 +14,9 @@
       <div class="col-lg-4">
         <label class="conteneur" for="Destination">
           <label for="label-control"><i class="fa fa-angle-double-right"></i> Destination :</label>
-          <input class="form-control" type="text" [(ngModel)]="commande.Destination" name="Destination" id="Destination" placeholder="Destination" required #Destination="ngModel"/>
+          <select [(ngModel)]="commande.Destination" class="form-control" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let d of distinations,let id=index" [value]="iddistinations[id]">{{d.Nom}}</option>
+          </select>
         </label>
       </div>
       <div class="col-lg-4">
@@ -32,7 +34,9 @@
       <div class="col-lg-4">
         <label class="conteneur" for="Chantier">
           <label for="label-control"><i class="fa fa-angle-double-right"></i> Chantier :</label>
-          <input class="form-control" type="text" [(ngModel)]="commande.Chantier" name="Chantier" id="Chantier" placeholder="Chantier" required #Chantier="ngModel"/>
+          <select [(ngModel)]="commande.Chantier" class="form-control" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let c of chantiers,let id=index" [value]="idchantiers[id]">{{c.Nom}}</option>
+          </select>
         </label>
       </div>
       <div class="col-lg-4">

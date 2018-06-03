@@ -54,7 +54,7 @@
               <div class="rowInfo col-lg-12">
                 <label class="label-control pull-left conteneur" for="Destination">
                   <label for="pull-left col-lg-2"><i class="fa fa-truck"></i> Destination :</label>
-                  <input class="col-lg-5 formControl" type="text" [(ngModel)]="commande.Destination" name="Destination" id="Destination" placeholder="Destination" required #Destination="ngModel"/>
+                  <select [(ngModel)]="commande.Destination" class="col-lg-5 formControl" [ngModelOptions]="{standalone: true}"><option *ngFor="let d of distinations,let id=index" [value]="iddistinations[id]">{{d.Nom}}</option></select>
                 </label>
               </div>
               <div class="rowInfo col-lg-12">
@@ -72,19 +72,39 @@
               <div class="rowInfo col-lg-12">
                 <label class="label-control pull-left conteneur" for="Chantier">
                   <label for="pull-left col-lg-2"><i class="fa fa-truck"></i> Chantier :</label>
-                  <input class="col-lg-5 formControl" type="text" [(ngModel)]="commande.Chantier" name="Chantier" id="Chantier" placeholder="Chantier" required #Chantier="ngModel"/>
+                  <select [(ngModel)]="commande.Chantier" class="col-lg-5 formControl" [ngModelOptions]="{standalone: true}"><option *ngFor="let c of chantiers,let id=index" [value]="idchantiers[id]">{{c.Nom}}</option></select>
                 </label>
               </div>
               <div class="rowInfo col-lg-12">
                 <label class="label-control pull-left conteneur" for="Urgence">
                   <label for="pull-left col-lg-2"><i class="fa fa-truck"></i> Urgence :</label>
-                  <input class="col-lg-5 formControl" type="text" [(ngModel)]="commande.Urgence" name="Urgence" id="Urgence" placeholder="Urgence" required #Urgence="ngModel"/>
+                  <label class="formControl col-sm-1 col-lg-1"><b >3</b><input type="radio" class="check pull-right" [checked]=true value="3" [(ngModel)]="commande.Urgence" [ngModelOptions]="{standalone: true}" /></label>
+                  <label class="formControl col-sm-1 col-lg-1"><b >2</b><input type="radio" class="check pull-right" [checked]=true value="2" [(ngModel)]="commande.Urgence" [ngModelOptions]="{standalone: true}" /></label>
+                  <label class="formControl col-sm-1 col-lg-1"><b >1</b><input type="radio" class="check pull-right" [checked]=true value="1" [(ngModel)]="commande.Urgence" [ngModelOptions]="{standalone: true}" /></label>
                 </label>
               </div>
               <div class="rowInfo col-lg-12">
                 <label class="label-control pull-left conteneur" for="Duree_chevauchement">
                   <label for="pull-left col-lg-2"><i class="fa fa-truck"></i> Durée du chevauchement :</label>
-                  <input class="col-lg-5 formControl" type="datetime" [(ngModel)]="commande.Duree_chevauchement" name="Duree_chevauchement" id="Duree_chevauchement" placeholder="Duree_chevauchement" required #Duree_chevauchement="ngModel"/>
+                  <input class="col-lg-5 formControl" type="datetime" [(ngModel)]="commande.Duree_chevauchement" name="Duree_chevauchement" id="Duree_chevauchement" placeholder="Duree chevauchement" required #Duree_chevauchement="ngModel"/>
+                </label>
+              </div>
+              <div class="rowInfo col-lg-12">
+                <label class="label-control pull-left conteneur" for="DD">
+                  <label for="pull-left col-lg-2"><i class="fa fa-truck"></i> DD :</label>
+                  <input class="col-lg-5 formControl" type="text" [(ngModel)]="commande.DD" name="DD" id="DD" placeholder="DD" required #DD="ngModel"/>
+                </label>
+              </div>
+              <div class="rowInfo col-lg-12">
+                <label class="label-control pull-left conteneur" for="PVente">
+                  <label for="pull-left col-lg-2"><i class="fa fa-truck"></i> PVente :</label>
+                  <input class="col-lg-5 formControl" type="text" [(ngModel)]="commande.PVente" name="PVente" id="PVente" placeholder="Prix de Vente" required #PVente="ngModel"/>
+                </label>
+              </div>
+              <div class="rowInfo col-lg-12">
+                <label class="label-control pull-left conteneur" for="Criticite_Client">
+                  <label for="pull-left col-lg-2"><i class="fa fa-truck"></i> Criticité du Client :</label>
+                  <input class="col-lg-5 formControl" type="number" [(ngModel)]="commande.Criticite_Client" name="Criticite_Client" id="Criticite_Client" placeholder="Criticité du Client" required #Criticite_Client="ngModel"/>
                 </label>
               </div>
               <div class="col-lg-12 rowInfoBtn">

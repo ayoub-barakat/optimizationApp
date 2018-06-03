@@ -1,10 +1,11 @@
-
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Person, SearchService } from '../shared';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ClientService } from '../client/client.service'
 import { CommandeService } from '../commande/commande.service'
+import { ChantierService } from '../chantier/chantier.service'
+import { DistinationService } from '../distination/distination.service'
 
 @Component({
   selector: 'app-search',
@@ -24,9 +25,16 @@ export class SearchComponent implements OnInit, OnDestroy {
   commandes : any[];
   commande : any = {};
 
+  chantiers : any[];
+  idchantiers : any[];
+  distinations : any[];
+  iddistinations : any[];
+
   constructor(private searchService: SearchService,
               private route: ActivatedRoute,
               private clientService: ClientService,
+              private chantierService: ChantierService,
+              private distinationService: DistinationService,
               private commandeService: CommandeService) { }
 
   ngOnInit() {
@@ -51,6 +59,19 @@ export class SearchComponent implements OnInit, OnDestroy {
       (data: any) => {
         this.clients = Object.values(data);
         this.idclients = Object.keys(data);
+        error => console.log(error)
+      });
+
+    this.chantierService.getAll().subscribe(
+      (data: any) => {
+        this.chantiers = Object.values(data);
+        this.idchantiers = Object.keys(data);
+        error => console.log(error)
+      });
+    this.distinationService.getAll().subscribe(
+      (data: any) => {
+        this.distinations = Object.values(data);
+        this.iddistinations = Object.keys(data);
         error => console.log(error)
       });
   }
